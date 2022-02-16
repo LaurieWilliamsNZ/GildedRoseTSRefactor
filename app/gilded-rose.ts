@@ -17,28 +17,36 @@ export class GildedRose {
     this.items = items;
   }
 
-  degradeOrdinaryItem(item, days) {
+  calculateOrdinaryQuality(item, days) {
     const itemQuality = item.quality;
     const itemQualityDevalued = itemQuality - days;
     item.quality = this.roundQuality(itemQualityDevalued);
-    console.log(item);
   }
 
-  degradeAgedBrie(item) {
-    //console.log(item, 'brie')
-    return;
-  }
-
-  degradeQualityByType(item, days) {
-    return (
-      {
-        'Aged Brie': this.degradeAgedBrie(item),
-      }[item.type] || this.degradeOrdinaryItem(item, days)
+  calculateBrie(item, days) {
+    console.log(
+      '🚀 ~ file: gilded-rose.ts ~ line 27 ~ GildedRose ~ calculateBrie ~ item',
+      item
     );
+    // console.log(item, 'brie before');
+    // const itemQuality = item.quality;
+    // const itemQualityDevalued = itemQuality + days;
+    // item.quality = this.roundQuality(itemQualityDevalued);
+    // console.log(item, 'brie after');
+  }
+
+  calculateQualitByType(item, days) {
+    const calculations = {
+      ['Aged Brie']: this.calculateBrie(item, days),
+      Sulfuras: null,
+      ['Backstage passes to a TAFKAL80ETC concert']: null,
+      ['Conjured Mana Cake']: null,
+    };
+    return calculations[item.name] || this.calculateOrdinaryQuality(item, days);
   }
 
   updateQuality(items, days) {
-    items.forEach((item) => this.degradeQualityByType(item, days));
+    items.forEach((item) => this.calculateQualitByType(item, days));
   }
 
   roundQuality(itemQualityDevalued: number) {
