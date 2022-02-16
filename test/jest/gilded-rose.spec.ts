@@ -1,9 +1,15 @@
+import { expect } from 'chai';
 import { Item, GildedRose } from '@/gilded-rose';
 
 describe('Gilded Rose', () => {
-  it('should foo', () => {
-    const gildedRose = new GildedRose([new Item('foo', 0, 0)]);
-    const items = gildedRose.updateQuality();
-    expect(items[0].name).toBe('fixme');
+  it('Quality should never be higher than 50', () => {
+    const gildedRose = new GildedRose();
+    const result = gildedRose.roundQuality(51);
+    expect(result).equal(50);
+  });
+  it('Quality should never be less than 0', () => {
+    const gildedRose = new GildedRose();
+    const result = gildedRose.roundQuality(-1);
+    expect(result).equal(0);
   });
 });
