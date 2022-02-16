@@ -20,4 +20,5 @@ if (process.argv.length > 2) {
   days = +process.argv[2];
 }
 
+console.log('items:', items);
 gildedRose.updateQuality(items, days);

@@ -24,23 +24,17 @@ export class GildedRose {
   }
 
   calculateBrie(item, days) {
-    console.log(
-      '🚀 ~ file: gilded-rose.ts ~ line 27 ~ GildedRose ~ calculateBrie ~ item',
-      item
-    );
-    // console.log(item, 'brie before');
-    // const itemQuality = item.quality;
-    // const itemQualityDevalued = itemQuality + days;
-    // item.quality = this.roundQuality(itemQualityDevalued);
-    // console.log(item, 'brie after');
+    const itemQuality = item.quality;
+    const itemQualityDevalued = itemQuality + days;
+    item.quality = this.roundQuality(itemQualityDevalued);
   }
 
   calculateQualitByType(item, days) {
     const calculations = {
-      ['Aged Brie']: this.calculateBrie(item, days),
+      'Aged Brie': this.calculateBrie(item, days),
       Sulfuras: null,
-      ['Backstage passes to a TAFKAL80ETC concert']: null,
-      ['Conjured Mana Cake']: null,
+      'Backstage passes to a TAFKAL80ETC concert': null,
+      'Conjured Mana Cake': null,
     };
     return calculations[item.name] || this.calculateOrdinaryQuality(item, days);
   }
