@@ -12,4 +12,7 @@ describe('Gilded Rose', () => {
     const result = gildedRose.roundQuality(-1);
     expect(result).equal(0);
   });
+  it('quality degrades twice as fast for expired ordinary item', () => {});
+  it('degradeQualityByType should call the right function', () => {});
+  it('Aged Brie should increase in quality with age', () => {});
 });
