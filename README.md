@@ -43,4 +43,3 @@ npm run test:jest:watch
 ```sh
 npm run test:mocha
 ```
-# GildedRoseTSRefactor
